@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx --env-file .env watch src/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.12.7",
+    "prisma": "^5.13.0",
     "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   },
