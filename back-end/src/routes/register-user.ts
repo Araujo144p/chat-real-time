@@ -2,6 +2,8 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
+import jwt from 'jsonwebtoken'
+import { JWTSecret } from "../jwt-code/code";
 
 export async function registerUser(app: FastifyInstance){
      app
@@ -27,6 +29,11 @@ export async function registerUser(app: FastifyInstance){
             }
         })
 
-        reply.status(201).send({ userId: user.id })
+        const token = jwt.sign({ id: user.id,
+            email: user.email 
+        }, JWTSecret, { expiresIn: '1000h' })
+
+        return reply.status(201).send({ token: token })
+        
      })
 }
