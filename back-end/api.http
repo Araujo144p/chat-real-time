@@ -1,0 +1,9 @@
+POST http://localhost:3030/user
+Content-Type: application/json
+
+{
+    "socialName": "Cauã Brabo",
+    "username": "araujo144p",
+    "email": "teste5661@gmail.com",
+    "password": "futuroHash"
+}
