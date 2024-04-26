@@ -26,6 +26,7 @@ model Chat {
   nomeSocial String
   online     Boolean      @default(false)
   UserOnChat UserOnChat[]
+  Message    Message[]
 
   @@map("chat")
 }
@@ -39,4 +40,14 @@ model UserOnChat {
 
   @@id([userId, chatId])
   @@map("user_on_chat")
+}
+
+model Message {
+  id   Int    @id @default(autoincrement())
+  text String
+
+  chat   Chat   @relation(fields: [chatId], references: [id])
+  chatId String
+
+  @@map("message")
 }
